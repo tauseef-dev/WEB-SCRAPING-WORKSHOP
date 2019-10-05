@@ -1,4 +1,5 @@
 from requests_html import HTMLSession,HTMLResponse
+import urllib.request
 
 session = HTMLSession()
 response = session.get("http://books.toscrape.com/")
@@ -45,7 +46,24 @@ for title in titles:
 for price in prices:
     cost.append(price.text)
 
+#  for i in range(len(name)):
+#     print(name[i])
+#     print(cost[i])
+
+#image = block.find('li div.image_container img', first=True)
+#print('http://books.toscrape.com/'+image.attrs['src'])
+
+images = block.find('li div.image_container img')
+
+link = []
+
+for image in images:
+    link.append('http://books.toscrape.com/'+image.attrs['src'])
+
 for i in range(len(name)):
     print(name[i])
     print(cost[i])
+    print(link[i])
+    urllib.request.urlretrieve(link[i], name[i])
+    print('\n')
 
