@@ -11,7 +11,8 @@ source = response.html
 #print(source.text)
 #print(source.html)
 
-title=source.find('title')
+
+# title=source.find('', first=True)
 #print(title[0].text)
 
 block = source.find('ol.row', first=True) #TAG 'OL' CLASS 'ROW'
@@ -60,10 +61,20 @@ link = []
 for image in images:
     link.append('http://books.toscrape.com/'+image.attrs['src'])
 
-for i in range(len(name)):
-    print(name[i])
-    print(cost[i])
-    print(link[i])
-    urllib.request.urlretrieve(link[i], name[i])
-    print('\n')
 
+
+
+# divs = source.find('div.row', first=True)
+# print(divs)
+
+# for i in range(len(name)):
+#     print(name[i])
+#     print(cost[i])
+#     print(link[i])
+#     urllib.request.urlretrieve(link[i], name[i])
+#     print('\n')
+
+url=["http://books.toscrape.com/catalogue/page-2.html"]
+for no in range(1,51):
+    url.append(f"http://books.toscrape.com/catalogue/page-{no}.html")
+    print(url)
